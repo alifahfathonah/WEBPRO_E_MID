@@ -19,4 +19,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::put('/forum/{id}','AnswerController@store');
+
+Route::get('/forum/answer/{answer}','AnswerController@edit');
+Route::post('/forum/answer/{answer}/update','AnswerController@update');
+
 Route::get('/home', 'HomeController@index')->name('home');
