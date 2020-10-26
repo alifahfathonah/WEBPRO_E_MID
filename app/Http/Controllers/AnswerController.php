@@ -54,7 +54,7 @@ class AnswerController extends Controller
                         ->withErrors($validator)
                         ->with('status','Update unsuccessfull');
         }
- */
+        */
         Answer::find($answer->id)->update([
             'answer' => $request->editanswer,
         ]);
