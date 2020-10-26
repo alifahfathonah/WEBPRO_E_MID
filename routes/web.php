@@ -23,8 +23,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::put('/forum/{id}','AnswerController@store');
 
-Route::get('/forum/answer/{answer}','AnswerController@edit');
+Route::patch('/forum/answer/{answer}','AnswerController@edit');
 Route::post('/forum/answer/{answer}/update','AnswerController@update');
+Route::delete('/forum/answer/{answer}','AnswerController@destroy');
 
 Route::get('/forum/create','QuestionController@create');
 Route::post('/forum','QuestionController@store');
