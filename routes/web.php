@@ -19,6 +19,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/home', 'HomeController@index')->name('home');
+
 Route::put('/forum/{id}','AnswerController@store');
 
 Route::get('/forum/answer/{answer}','AnswerController@edit');

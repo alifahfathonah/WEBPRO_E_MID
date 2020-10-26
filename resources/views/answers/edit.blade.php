@@ -3,6 +3,15 @@
 @section('content')
     <div class="container">
         <h3>Edit Answer</h3>
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <form action='{{url("/forum/answer/$answer->id")}}/update' method="POST">
             @csrf
 

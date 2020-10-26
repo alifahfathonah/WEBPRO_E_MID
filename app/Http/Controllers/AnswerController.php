@@ -38,24 +38,13 @@ class AnswerController extends Controller
 
     /**
      * Update the specified resource in storage.
-     * @param  \Illuminate\Http\Request  $request
      */
     public function update(Request $request, Answer $answer)
     {
         $request->validate([
             "editanswer" => "required",
         ]);
-        /*
-        $validator = Validator::make($request->all(), [
-            "editanswer" => "required",
-        ]);
 
-        if ($validator->fails()) {
-            return redirect("/forum/$answer->question_id")
-                        ->withErrors($validator)
-                        ->with('status','Update unsuccessfull');
-        }
-        */
         Answer::find($answer->id)->update([
             'answer' => $request->editanswer,
         ]);
