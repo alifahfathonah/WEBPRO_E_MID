@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 
 class AnswerController extends Controller
 {
-
     /**
      * Store a newly created resource in storage.
      */
@@ -20,10 +19,13 @@ class AnswerController extends Controller
         Answer::create([
             'answer' => $request->answer,
             'question_id' => $question_id,
-            'user_id' => Auth::user()->id
+            'user_id' => Auth::user()->id,
         ]);
 
-        return redirect("/forum/$question_id")->with('status','Answer Posted Successfully');
+        return redirect("/forum/$question_id")->with(
+            'status',
+            'Answer Posted Successfully'
+        );
     }
 
     /**
@@ -40,7 +42,6 @@ class AnswerController extends Controller
      */
     public function update(Request $request, Answer $answer)
     {
-
         $request->validate([
             "editanswer" => "required",
         ]);
@@ -59,6 +60,9 @@ class AnswerController extends Controller
             'answer' => $request->editanswer,
         ]);
 
-        return redirect("/forum/$answer->question_id")->with('status','Updated Successfully');
+        return redirect("/forum/$answer->question_id")->with(
+            'status',
+            'Updated Successfully'
+        );
     }
 }
