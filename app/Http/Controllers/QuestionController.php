@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class QuestionController extends Controller
 {
-
+    //Display latest 5 question
     public function index()
     {
         //
@@ -47,6 +47,14 @@ class QuestionController extends Controller
 
         // Redirect the user back to the forum with a status message
         return redirect('/forum')->with('status','Question Posted Successfully');
+    }
+
+    // App\Http\Controllers\QuestionController
+    // Show a specific question
+    public function show(Question $question)
+    {
+        //
+        return view('questions.show',compact('question'));
     }
 
     // App\Http\Controllers\QuestionController
