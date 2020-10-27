@@ -35,4 +35,6 @@ Route::patch('/forum/{question}','QuestionController@edit');
 Route::post('/forum/{question}/update','QuestionController@update');
 Route::delete('/forum/{question}','QuestionController@destroy');
 
+Route::get('/question','QuestionsController@showQuestion');
+
 Route::get('/home', 'HomeController@index')->name('home');

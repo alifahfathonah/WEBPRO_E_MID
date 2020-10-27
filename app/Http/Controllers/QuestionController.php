@@ -15,6 +15,14 @@ class QuestionController extends Controller
         $question=Question::orderByRaw('created_at DESC')->paginate(5);
         return view('questions/index',compact('question'));
     }
+
+    //Display questions made by user
+    public function showQuestion()
+    {
+        //
+        $listq=Question::where('user_id', auth()->id())->orderByRaw('created_at DESC')->paginate(5);
+        return view('questions/question',compact('listq'));
+    }
     
     // App\Http\Controllers\QuestionController
     /**
