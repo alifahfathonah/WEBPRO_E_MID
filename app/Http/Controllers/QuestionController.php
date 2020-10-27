@@ -8,6 +8,14 @@ use Illuminate\Support\Facades\Auth;
 
 class QuestionController extends Controller
 {
+
+    public function index()
+    {
+        //
+        $question=Question::orderByRaw('created_at DESC')->paginate(5);
+        return view('questions/index',compact('question'));
+    }
+    
     // App\Http\Controllers\QuestionController
     /**
      * Show the form for creating a new resource.
