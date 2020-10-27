@@ -36,5 +36,6 @@ Route::post('/forum/{question}/update','QuestionController@update');
 Route::delete('/forum/{question}','QuestionController@destroy');
 
 Route::get('/question','QuestionsController@showQuestion');
+Route::get('/answer','AnswersController@showAnswer');
 
 Route::get('/home', 'HomeController@index')->name('home');
