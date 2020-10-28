@@ -8,7 +8,7 @@
                     <div class="card-body">
                         <h5 class="card-title">{{$question->question}}</h5>
                         <h6 class="card-subtitle mb-2 text-muted">Upload : {{$question->created_at}} - Edited : {{$question->updated_at}}</h6>
-                        <h6 class="card-subtitle mb-2 text-muted">Author : {{$question->user->username}}</h6>
+                        <h6 class="card-subtitle mb-2 text-muted">Author : {{$question->user->name}}</h6>
                         <p class="card-text" style="white-space: pre-line;">{{$question->detail_question}}</p>
 
                         @if(Auth::user()->id === $question->user_id)
@@ -68,7 +68,7 @@
                     <div class="card-body">
                         <h5 class="card-title"></h5>
                         <h6 class="card-subtitle mb-2 text-muted">Upload : {{$i->created_at}} - Edited : {{$i->updated_at}}</h6>
-                        <h6 class="card-subtitle mb-2 text-muted">By : {{$i->user->username}}</h6>
+                        <h6 class="card-subtitle mb-2 text-muted">By : {{$i->user->name}}</h6>
                         <p class="card-text" style="white-space: pre-line;">{{$i->answer}}</p>
                         @if(Auth::user()->id === $i->user_id)
                             <form action='{{url("/forum/answer/$i->id")}}' method="post" class="d-inline">
