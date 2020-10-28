@@ -23,7 +23,7 @@ class QuestionController extends Controller
         $listq=Question::where('user_id', auth()->id())->orderByRaw('created_at DESC')->paginate(5);
         return view('questions/question',compact('listq'));
     }
-    
+
     // App\Http\Controllers\QuestionController
     /**
      * Show the form for creating a new resource.
@@ -109,5 +109,27 @@ class QuestionController extends Controller
 
         // Redirect the user back to the forum with a status message
         return redirect("/forum")->with('status','Deleted Successfully');
+    }
+
+    // App\Http\Controllers\QuestionController
+    /**
+     * Search for specified resource(s) from storage.
+     */
+    public function search(Request $request)
+    {
+        // Check if keyword is not empty
+        $request->validate([
+            "keyword" => "required",
+        ]);
+
+        // Search question record in database
+        $question=Question::where('question','like',"%$request->keyword%")
+            ->orderByRaw('created_at DESC')
+            ->paginate(5);
+
+        $keyword=$request->keyword;
+
+        // Return to the forum with requested keyword question
+        return view('questions.index',compact('question','keyword'));
     }
 }
