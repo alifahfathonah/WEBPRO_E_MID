@@ -8,11 +8,14 @@ use Illuminate\Support\Facades\Auth;
 
 class AnswerController extends Controller
 {
-
+    // App\Http\Controllers\AnswerController
+    /**
+     * Display latest 5 answer that made by user using paginate.
+     */
     public function showAnswer()
     {
-        //
         $lista=Answer::where('user_id', auth()->id())->orderByRaw('created_at DESC')->paginate(5);
+
         return view('answers/answer',compact('lista'));
     }
 

@@ -8,19 +8,25 @@ use Illuminate\Support\Facades\Auth;
 
 class QuestionController extends Controller
 {
-    //Display latest 5 question
+    // App\Http\Controllers\QuestionController
+    /**
+     * Display latest 5 question using paginate.
+     */
     public function index()
     {
-        //
         $question=Question::orderByRaw('created_at DESC')->paginate(5);
+
         return view('questions/index',compact('question'));
     }
 
-    //Display questions made by user
+    // App\Http\Controllers\QuestionController
+    /**
+     * Display latest 5 question that made by user using paginate.
+     */
     public function showQuestion()
     {
-        //
         $listq=Question::where('user_id', auth()->id())->orderByRaw('created_at DESC')->paginate(5);
+
         return view('questions/question',compact('listq'));
     }
 
@@ -58,10 +64,11 @@ class QuestionController extends Controller
     }
 
     // App\Http\Controllers\QuestionController
-    // Show a specific question
+    /**
+     * Show a specific question
+     */
     public function show(Question $question)
     {
-        //
         return view('questions.show',compact('question'));
     }
 
