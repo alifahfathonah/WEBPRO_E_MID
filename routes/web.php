@@ -34,6 +34,7 @@ Route::post('/forum','QuestionController@store');
 Route::patch('/forum/{question}','QuestionController@edit');
 Route::post('/forum/{question}/update','QuestionController@update');
 Route::delete('/forum/{question}','QuestionController@destroy');
+Route::post("/forum/search",'QuestionsController@search');
 
 Route::get('/question','QuestionsController@showQuestion');
 Route::get('/answer','AnswersController@showAnswer');
